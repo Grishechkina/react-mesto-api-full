@@ -114,8 +114,10 @@ module.exports.login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          // domain: 'paw.patrol.nomoredomains.sbs',
-        },'Domain=paw.patrol.nomoredomains.sbs');
+          domain: 'paw.patrol.nomoredomains.sbs',
+          sameSite: 'None',
+          secure: true,
+        });
       res.send({ token });
     })
     .catch(next);
