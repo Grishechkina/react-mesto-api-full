@@ -21,8 +21,8 @@ app.use(requestLogger);
 app.use(cors(
   {
     origin: [
-      'https://paw.patrol.nomoredomains.sbs/',
-      'http://paw.patrol.nomoredomains.sbs/',
+      'https://paw.patrol.nomoredomains.sbs',
+      'http://paw.patrol.nomoredomains.sbs',
       'https://api.paw.patrol.nomoredomains.sbs',
       'http://api.paw.patrol.nomoredomains.sbs',
     ],
