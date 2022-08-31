@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { errors } = require('celebrate');
 const routes = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -17,6 +18,25 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 
+app.use(cors(
+  {
+    methods: [
+      'GET',
+      'POST',
+      'DELETE',
+      'UPDATE',
+      'PUT',
+      'PATCH'],
+    origin: [
+      'https://paw.patrol.nomoredomains.sbs',
+      'http://paw.patrol.nomoredomains.sbs',
+      'https://api.paw.patrol.nomoredomains.sbs',
+      'http://api.paw.patrol.nomoredomains.sbs',
+      'https://localhost:3000',
+      'http://localhost:3000',
+    ],
+  },
+));
 app.use(routes);
 app.use(errorLogger);
 app.use(errors());
