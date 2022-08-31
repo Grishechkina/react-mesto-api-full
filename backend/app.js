@@ -20,13 +20,6 @@ app.use(requestLogger);
 
 app.use(cors(
   {
-    methods: [
-      'GET',
-      'POST',
-      'DELETE',
-      'UPDATE',
-      'PUT',
-      'PATCH'],
     origin: [
       'https://paw.patrol.nomoredomains.sbs',
       'http://paw.patrol.nomoredomains.sbs',
@@ -35,6 +28,8 @@ app.use(cors(
       'https://localhost:3000',
       'http://localhost:3000',
     ],
+    credentials: true,
+    optionsSuccessStatus: 200,
   },
 ));
 app.use(routes);
