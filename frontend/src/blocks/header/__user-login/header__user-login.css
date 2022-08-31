@@ -1,0 +1,10 @@
+.header__user-login {
+  margin: 0;
+  display: inline;
+  margin-right: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #FFFFFF;
+}

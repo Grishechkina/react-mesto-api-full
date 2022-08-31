@@ -1,0 +1,24 @@
+.profile__overlay {
+  background-color: black;
+  transition: opacity 0.5s;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+}
+
+.profile__overlay:hover {
+  opacity: 0.8;
+}
+
+.profile__overlay::before {
+  content: '';
+  background: url(../../../images/editButtonWithoutBorder.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+}

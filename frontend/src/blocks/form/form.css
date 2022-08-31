@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(330px - 34px * 2 - 45px - 29px);
+}
+
+@media (max-width: 400px) {
+  .form {
+    min-height: calc(282px - 24px * 2 - 72px - 22px);
+  }
+}

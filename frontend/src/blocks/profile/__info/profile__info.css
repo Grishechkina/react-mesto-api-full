@@ -1,0 +1,22 @@
+.profile__info {
+  margin-right: calc(100% - 120px - 30px - 336px - 150px);
+  padding-top: 12px;
+  width: 336px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 701px) {
+  .profile__info {
+    margin-right: 0;
+    margin-bottom: 36px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .profile__info {
+    padding-top: 20px;
+    width: 100%;
+  }
+}

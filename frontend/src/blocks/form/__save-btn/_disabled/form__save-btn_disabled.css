@@ -1,0 +1,12 @@
+.form__save-btn_disabled {
+  border: 1px solid #c3baba;
+  background-color: #fff;
+  color:  #c3baba;
+  box-sizing: border-box;
+  border-radius: 2px;
+  cursor: default;
+}
+
+.form__save-btn:hover {
+  opacity: 1;
+}
