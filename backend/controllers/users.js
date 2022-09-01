@@ -124,6 +124,11 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.signout = (req, res) => {
-  res.clearCookie('jwt');
+  res.clearCookie('jwt', {
+    httpOnly: true,
+    domain: 'paw.patrol.nomoredomains.sbs',
+    sameSite: 'None',
+    secure: true,
+  });
   res.send(JSON.stringify({ message: 'you are logged out' }));
 };
