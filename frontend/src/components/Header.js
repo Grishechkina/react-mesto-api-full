@@ -1,11 +1,13 @@
 import React from 'react';
 import logo from '../images/mesto-logo.svg'
 import { Link, Route, Routes } from 'react-router-dom'
+import * as auth from '../utils/auth';
 
 function Header({ email, toggleIsLoggedIn }) {
 
   function handleSignOut() {
-    localStorage.removeItem('token')
+    // localStorage.removeItem('token')
+    auth.signout()
     toggleIsLoggedIn(false)
   }
 

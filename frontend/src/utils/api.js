@@ -1,10 +1,11 @@
 class Api {
   constructor(options) {
     this.baseUrl = options.baseUrl
-    this.options = {headers: options.headers};
+    this.options = {headers: options.headers, credentials: 'include'};
   }
 
   getUserInfo() {
+    console.log(this.options)
     return fetch(this.baseUrl + '/users/me', this.options)
       .then(this._checkServerResp)
   }
@@ -64,10 +65,10 @@ class Api {
 
 const api = new Api({
   baseUrl: 'https://api.paw.patrol.nomoredomains.sbs',
-  // headers: {
-  //   authorization: '13ad9a03-10d1-4fa8-bf7f-d95899c835fe',
-  //   'Content-Type': 'application/json'
-  // }
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
 })
 
 export default api
