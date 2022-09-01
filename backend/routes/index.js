@@ -40,9 +40,10 @@ router.post(
   createUser,
 );
 
+router.post('/signout', signout);
+
 router.use(auth);
 
-router.post('/signout', signout);
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
 

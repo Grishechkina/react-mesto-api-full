@@ -125,5 +125,5 @@ module.exports.login = (req, res, next) => {
 
 module.exports.signout = (req, res) => {
   res.clearCookie('jwt');
-  res.send('you are logged out');
+  res.send(JSON.stringify({ message: 'you are logged out' }));
 };
