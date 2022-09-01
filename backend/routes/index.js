@@ -2,8 +2,14 @@ const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const auth = require('../middlewares/auth');
 const NotFoundError = require('../errors/not-found-err');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, signout } = require('../controllers/users');
 const { hrefRegex } = require('../regex/hrefRegex');
+
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 router.post(
   '/signin',
@@ -36,6 +42,7 @@ router.post(
 
 router.use(auth);
 
+router.post('/signout', signout);
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
 
