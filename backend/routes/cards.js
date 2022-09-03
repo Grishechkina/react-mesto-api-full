@@ -10,6 +10,18 @@ const {
   deleteCardLike,
 } = require('../controllers/cards');
 
+const cardIdValidation = celebrate({
+  params: Joi.object().keys({
+    cardId: Joi.string().length(24).required()
+      .custom((cardId, helpers) => {
+        if (ObjectId.isValid(cardId)) {
+          return cardId;
+        }
+        return helpers.message('Невалидный id');
+      }),
+  }),
+});
+
 router.get('/', getCards);
 router.post(
   '/',
@@ -26,50 +38,8 @@ router.post(
   }),
   createCard,
 );
-router.delete(
-  '/:cardId',
-  celebrate({
-    params: Joi.object().keys({
-      cardId: Joi.string().length(24).required()
-        .custom((cardId, helpers) => {
-          if (ObjectId.isValid(cardId)) {
-            return cardId;
-          }
-          return helpers.message('Невалидный id');
-        }),
-    }),
-  }),
-  deleteCard,
-);
-router.put(
-  '/:cardId/likes',
-  celebrate({
-    params: Joi.object().keys({
-      cardId: Joi.string().required()
-        .custom((cardId, helpers) => {
-          if (ObjectId.isValid(cardId)) {
-            return cardId;
-          }
-          return helpers.message('Невалидный id');
-        }),
-    }),
-  }),
-  likeCard,
-);
-router.delete(
-  '/:cardId/likes',
-  celebrate({
-    params: Joi.object().keys({
-      cardId: Joi.string().length(24).required()
-        .custom((cardId, helpers) => {
-          if (ObjectId.isValid(cardId)) {
-            return cardId;
-          }
-          return helpers.message('Невалидный id');
-        }),
-    }),
-  }),
-  deleteCardLike,
-);
+router.delete('/:cardId', cardIdValidation, deleteCard);
+router.put('/:cardId/likes', cardIdValidation, likeCard);
+router.delete('/:cardId/likes', cardIdValidation, deleteCardLike);
 
 module.exports = router;

@@ -5,6 +5,7 @@ const NotFoundError = require('../errors/not-found-err');
 const BadAuthError = require('../errors/bad-auth-err');
 const BadRequestError = require('../errors/bad-request-err');
 const ConflictError = require('../errors/conflict-err');
+require('dotenv').config();
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})

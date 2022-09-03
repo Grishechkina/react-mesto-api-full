@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
+const mongoose = require('mongoose');
 const { hrefRegex } = require('../regex/hrefRegex');
 const {
   getUsers,
@@ -14,7 +15,13 @@ router.get(
   '/:userId',
   celebrate({
     params: Joi.object().keys({
-      userId: Joi.string().length(24).required(),
+      userId: Joi.string().length(24).required()
+        .custom((cardId, helpers) => {
+          if (mongoose.isObjectIdOrHexString(cardId)) {
+            return cardId;
+          }
+          return helpers.message('Невалидный id');
+        }),
     }),
   }),
   getUserById,
